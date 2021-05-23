@@ -1,15 +1,24 @@
-.col-md-2 {
-    margin: 8px;
+.col-md-2, .col-xs-6 {
+    padding: 16px;
     position: relative;
     overflow: hidden;
+}
+
+#heading{
+    color: white!important;
 }
 
 .col-md-2 img {
     max-width: 100%;
     border-radius: 10px;
-
-
 }
+
+
+.col-xs-6 img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
 
 .movie-info {
     display: flex;

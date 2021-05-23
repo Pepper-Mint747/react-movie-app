@@ -30,20 +30,21 @@ const Movie = () => {
     }, [])
 
 
-    const moviesList = movies.map((obj) => {
+    const moviesList = movies.map(({id, overview, poster_path, title, vote_average}) => {
 
-        return <div className={"col-xs-3 col-md-2"} key={obj.id}>
+        return <div className={"col-xs-6, col-md-2"} key={id}>
 
-            <img src={IMG_API + obj.poster_path} alt="meal" className={"img-fluid"}/>
+            <img src={IMG_API + poster_path} alt="meal" className={"img-fluid"}/>
 
             <div className="movie-info">
-                <p>{obj.title}</p>
-                <p>rating: {obj.vote_average}</p>
+                <p>{title}</p>
+                <p>rating: {vote_average}</p>
             </div>
+
 
             <div className="movie-over">
                 <h3>Overview:</h3>
-                <>{obj.overview}</>
+                <>{overview}</>
             </div>
 
         </div>
@@ -76,7 +77,7 @@ const Movie = () => {
         <div>
 
             <Navbar bg="dark" expand="lg">
-                <Navbar.Brand href="#"><h3>Frenetiks</h3></Navbar.Brand>
+                <Navbar.Brand href="#"><h3 id={"heading"}>Frenetiks</h3></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -98,8 +99,10 @@ const Movie = () => {
                 </Navbar.Collapse>
             </Navbar>
 
-            <div className="row justify-content-center">
-                {moviesList}
+            <div className="container">
+                <div className="row justify-content-center">
+                    {moviesList}
+                </div>
             </div>
         </div>
     );
