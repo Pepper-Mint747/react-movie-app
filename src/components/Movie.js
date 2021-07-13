@@ -30,7 +30,7 @@ const Movie = () => {
     }, [])
 
 
-    const moviesList = movies.map(({id, poster_path, title, vote_average}) => {
+    const moviesList = movies.map(({id, overview, poster_path, title, vote_average}) => {
 
         return <div className={"col-xs-6, col-md-2"} key={id}>
 
@@ -40,6 +40,13 @@ const Movie = () => {
                 <p>{title}</p>
                 <p>rating: {vote_average}</p>
             </div>
+
+
+            <div className="movie-over">
+                <h3>Overview:</h3>
+                <>{overview}</>
+            </div>
+
         </div>
     })
 
