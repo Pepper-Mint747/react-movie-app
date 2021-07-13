@@ -24,25 +24,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem
+
 }
 
 p {
     font-weight: bold!important;
-}
-
-.movie-over {
-    background: #ffffff;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 8px;
-    margin: 0 1rem;
-    max-height: 100%;
-    transform: translateY(100%);
-    transition: 0.3s ease-in;
-    /*opacity: 0;*/
 }
 
 .col-md-2:hover .movie-over {
