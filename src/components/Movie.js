@@ -4,11 +4,6 @@ import {Navbar, Nav, Form, FormControl, Button} from "react-bootstrap";
 import "./Movie.css"
 
 
-const MOVIE_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cbbc36d22c2bd0bc43bc8cf209727f80&page=1"
-const IMG_API = "https://image.tmdb.org/t/p/w1280"
-const SEARCH_API = "https://api.themoviedb.org/3/search/movie?&api_key=cbbc36d22c2bd0bc43bc8cf209727f80&query="
-
-
 const Movie = () => {
 
     const [movies, setMovies] = useState([]);
@@ -16,7 +11,7 @@ const Movie = () => {
 
     useEffect(() => {
 
-        axios.get(MOVIE_API)
+        axios.get(process.env.REACT_APP_MOVIE_API)
             .then(res => {
                 console.log(res.data)
 
@@ -30,30 +25,23 @@ const Movie = () => {
     }, [])
 
 
-    const moviesList = movies.map(({id, overview, poster_path, title, vote_average}) => {
+    const moviesList = movies.map(({id, poster_path, title, vote_average}) => {
 
         return <div className={"col-xs-6, col-md-2"} key={id}>
 
-            <img src={IMG_API + poster_path} alt="meal" className={"img-fluid"}/>
+            <img src={process.env.REACT_APP_IMG_API + poster_path} alt="meal" className={"img-fluid"}/>
 
             <div className="movie-info">
                 <p>{title}</p>
                 <p>rating: {vote_average}</p>
             </div>
-
-
-            <div className="movie-over">
-                <h3>Overview:</h3>
-                <>{overview}</>
-            </div>
-
         </div>
     })
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
 
-        axios.get(SEARCH_API + searchTerm)
+        axios.get(process.env.REACT_APP_SEARCH_API + searchTerm)
             .then(res => {
                 console.log(res.data)
 
